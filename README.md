@@ -4,7 +4,7 @@ Cole seu código. Receba o roast.
 
 **devroast** é um app web onde você cola trechos de código e recebe reviews brutalmente honestas com uma nota de 0 a 10. Ative o **roast mode** para sarcasmo máximo e zero piedade.
 
-Construído durante o evento [NLW](https://www.rocketseat.com.br/nlw) da [Rocketseat](https://www.rocketseat.com.br/).
+Construído durante o evento NLW da [Rocketseat](https://www.rocketseat.com.br/).
 
 ## Funcionalidades
 

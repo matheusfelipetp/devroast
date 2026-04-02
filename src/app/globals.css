@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Fonts — font-sans uses system default, font-mono uses JetBrains Mono */
+  --font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  /* Background */
+  --color-bg-page: #0a0a0a;
+  --color-bg-surface: #0f0f0f;
+  --color-bg-elevated: #1a1a1a;
+  --color-bg-input: #111111;
+
+  /* Text */
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #4b5563;
+  --color-text-muted: #525252;
+
+  /* Border */
+  --color-border-primary: #2a2a2a;
+  --color-border-focus: #10b981;
+
+  /* Accent */
+  --color-accent-green: #10b981;
+  --color-accent-amber: #f59e0b;
+  --color-accent-red: #ef4444;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-orange: #f97316;
+  --color-accent-blue: #3b82f6;
+
+  /* Primary */
+  --color-primary: #ff8400;
+  --color-primary-foreground: #111111;
+
+  /* Secondary */
+  --color-secondary: #2e2e2e;
+  --color-secondary-foreground: #ffffff;
+
+  /* Destructive */
+  --color-destructive: #ff5c33;
+
+  /* Muted */
+  --color-muted: #2e2e2e;
+  --color-muted-foreground: #b8b9b6;
+
+  /* Card */
+  --color-card: #1a1a1a;
+  --color-card-foreground: #ffffff;
+
+  /* Semantic */
+  --color-success: #222924;
+  --color-success-foreground: #b6ffce;
+  --color-error: #24100b;
+  --color-error-foreground: #ff5c33;
+  --color-warning: #291c0f;
+  --color-warning-foreground: #ff8400;
+  --color-info: #222229;
+  --color-info-foreground: #b2b2ff;
+
+  /* Sidebar */
+  --color-sidebar: #18181b;
+  --color-sidebar-foreground: #fafafa;
+  --color-sidebar-accent: #2a2a30;
+  --color-sidebar-accent-foreground: #fafafa;
+  --color-sidebar-border: #ffffff1a;
+  --color-sidebar-primary: #18181b;
+  --color-sidebar-primary-foreground: #fafafa;
+
+  /* Ring */
+  --color-ring: #666666;
+
+  /* Radius */
+  --radius-none: 0px;
+  --radius-m: 16px;
+  --radius-pill: 999px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+
+  /* Syntax Highlighting */
+  --color-syn-keyword: #a0a0a0;
+  --color-syn-variable: #ffffff;
+  --color-syn-string: #99ffe4;
+  --color-syn-function: #ffc799;
+  --color-syn-type: #ffc799;
+  --color-syn-number: #ffc799;
+  --color-syn-operator: #a0a0a0;
+  --color-syn-property: #a0a0a0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+	html,
+	body {
+		height: 100%;
+		overflow-x: hidden;
+	}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	body {
+		background-color: var(--color-bg-page);
+		color: var(--color-text-primary);
+	}
 }
