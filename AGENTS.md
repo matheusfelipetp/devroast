@@ -20,7 +20,7 @@ src/
 ├── app/              # Páginas e layouts (App Router)
 ├── components/
 │   ├── ui/           # Primitivos UI reutilizáveis (ver ui/AGENTS.md)
-│   └── *.tsx         # Componentes de aplicação (Navbar, CodeEditor)
+│   └── *.tsx         # Componentes de aplicação
 ```
 
 ## Padrões globais
@@ -28,7 +28,7 @@ src/
 - **Named exports apenas** — nunca usar `export default` (exceto páginas do Next.js).
 - **Classes canônicas do Tailwind v4** — nunca usar valores arbitrários (`[Npx]`) quando existir classe canônica. Dividir px por 4 (ex: `w-[50px]` -> `w-12.5`).
 - **Design tokens** — usar apenas tokens do `globals.css` `@theme`. Nunca hardcodar cores ou usar paleta padrão do Tailwind.
-- **Composição sobre props** — componentes multi-parte usam sub-components em pastas com barrel `index.ts` (ex: `analysis-card/`). Componentes de elemento único ficam como arquivos standalone.
+- **Composição sobre props** — componentes multi-parte usam sub-components em pastas com barrel `index.ts`. Componentes de elemento único ficam como arquivos standalone.
 - **`tv` vs `twMerge`** — usar `tv()` para componentes com variantes. Usar `twMerge` para sub-components de composição simples sem variantes.
 - **Tipagem** — estender elementos nativos via `ComponentProps<"element">`. Intersectar com `VariantProps` quando aplicável.
 - **Sem comentários JSX** — código deve ser autoexplicativo. Não usar `{/* ... */}` para rotular seções.
