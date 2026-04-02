@@ -51,6 +51,35 @@ export function Component({ variant, size, className, ...props }: ComponentProps
 }
 ```
 
+## Composição e organização de arquivos
+
+- **Componentes de elemento único** (Button, Badge, Toggle, DiffLine, ScoreRing): ficam como arquivos standalone (ex: `button.tsx`).
+- **Componentes multi-parte** (AnalysisCard, CodeBlock, Leaderboard): são divididos em sub-components, cada um em seu próprio arquivo dentro de uma pasta com barrel `index.ts`.
+
+### Estrutura de pasta multi-parte
+
+```
+component-name/
+├── component-name.tsx          # Componente raiz
+├── component-name-header.tsx   # Sub-component
+├── component-name-body.tsx     # Sub-component
+└── index.ts                    # Barrel re-exportando tudo
+```
+
+Exemplo de barrel (`index.ts`):
+
+```ts
+export { CodeBlock } from "./code-block";
+export { CodeBlockHeader } from "./code-block-header";
+export { CodeBlockBody } from "./code-block-body";
+```
+
+### Quando dividir
+
+- Divida quando o componente tem **partes visuais distintas** que o consumidor monta via composição (ex: `<CodeBlock>` + `<CodeBlockHeader>` + `<CodeBlockBody>`).
+- **Não** divida componentes simples que são sempre usados inteiros sem composição (ex: `<Button>`).
+- Cada sub-component deve estender o elemento HTML nativo correspondente via `ComponentProps<"element">`.
+
 ## Component-specific patterns
 
 - **Components with behavior** (toggle, dialog, tooltip): use `@base-ui/react` headless primitives. Mark the file with `"use client"`.
