@@ -83,6 +83,10 @@
   --spacing-lg: 24px;
   --spacing-xl: 40px;
 
+  /* Diff */
+  --color-diff-added: #10b98115;
+  --color-diff-removed: #ef444415;
+
   /* Syntax Highlighting */
   --color-syn-keyword: #a0a0a0;
   --color-syn-variable: #ffffff;
