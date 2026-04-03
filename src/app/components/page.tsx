@@ -190,6 +190,10 @@ export default function ComponentsPage() {
 					<SubSection title="javascript">
 						<CodeBlock>
 							<CodeBlockHeader>
+								<span className="size-2.5 rounded-full bg-accent-red" />
+								<span className="size-2.5 rounded-full bg-accent-amber" />
+								<span className="size-2.5 rounded-full bg-accent-green" />
+								<span className="flex-1" />
 								<span className="font-mono text-xs text-text-tertiary">
 									calculate.js
 								</span>

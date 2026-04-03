@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import type { BundledLanguage } from "shiki";
-import { CodeEditor } from "@/components/code-editor";
+import { CODE_MAX_LENGTH, CodeEditor } from "@/components/code-editor";
 import { Button } from "@/components/ui/button";
 import {
 	LeaderboardCell,
@@ -103,7 +103,10 @@ export default function Home() {
 					</span>
 				</div>
 
-				<Button variant="primary" disabled={code.trim().length === 0}>
+				<Button
+					variant="primary"
+					disabled={code.trim().length === 0 || code.length > CODE_MAX_LENGTH}
+				>
 					$ roast_my_code
 				</Button>
 			</div>

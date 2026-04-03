@@ -16,10 +16,6 @@ export function CodeBlockHeader({
 			)}
 			{...props}
 		>
-			<span className="size-2.5 rounded-full bg-accent-red" />
-			<span className="size-2.5 rounded-full bg-accent-amber" />
-			<span className="size-2.5 rounded-full bg-accent-green" />
-			<span className="flex-1" />
 			{children}
 		</div>
 	);

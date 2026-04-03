@@ -13,6 +13,8 @@ import { LanguageSelector } from "@/components/language-selector";
 import { detectLanguage } from "@/lib/detect-language";
 import { highlightCode } from "@/lib/highlighter";
 
+export const CODE_MAX_LENGTH = 2000;
+
 type CodeEditorProps = {
 	value: string;
 	onChange: (value: string) => void;
@@ -48,6 +50,9 @@ export function CodeEditor({
 	const detectTimerRef = useRef<ReturnType<typeof setTimeout>>(null);
 	const valueRef = useRef(value);
 	valueRef.current = value;
+
+	const charCount = value.length;
+	const overLimit = charCount > CODE_MAX_LENGTH;
 
 	const updateLineCount = useCallback((text: string) => {
 		setLineCount(text.split("\n").length || 1);
@@ -269,6 +274,17 @@ export function CodeEditor({
 						)}
 					/>
 				</div>
+			</div>
+
+			<div className="flex items-center justify-end border-t border-border-primary px-4 py-1.5">
+				<span
+					className={twMerge(
+						"font-mono text-xs tabular-nums",
+						overLimit ? "text-accent-red" : "text-text-tertiary",
+					)}
+				>
+					{charCount} / {CODE_MAX_LENGTH}
+				</span>
 			</div>
 		</div>
 	);
