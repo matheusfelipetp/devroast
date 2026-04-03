@@ -20,6 +20,15 @@ Construído durante o evento NLW da [Rocketseat](https://www.rocketseat.com.br/)
 # Instalar dependências
 npm install
 
+# Subir o banco de dados (PostgreSQL via Docker)
+docker compose up -d
+
+# Aplicar migrations
+npm run db:migrate
+
+# Popular o banco com dados fake (opcional)
+npm run db:seed
+
 # Rodar servidor de desenvolvimento
 npm run dev
 ```
@@ -35,3 +44,8 @@ Abra [http://localhost:3000](http://localhost:3000) para ver o app.
 | `npm run start` | Servidor de produção |
 | `npm run lint` | Rodar linter (Biome) |
 | `npm run format` | Formatar código (Biome) |
+| `npm run db:generate` | Gerar migrations (Drizzle Kit) |
+| `npm run db:migrate` | Aplicar migrations no banco |
+| `npm run db:push` | Push direto do schema para o banco |
+| `npm run db:studio` | Abrir Drizzle Studio (GUI do banco) |
+| `npm run db:seed` | Popular o banco com 100 roasts fake |

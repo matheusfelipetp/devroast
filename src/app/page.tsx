@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import type { BundledLanguage } from "shiki";
 import { CodeEditor } from "@/components/code-editor";
 import { Button } from "@/components/ui/button";
 import {
@@ -49,6 +50,18 @@ const leaderboardData = [
 export default function Home() {
 	const [code, setCode] = useState("");
 	const [roastMode, setRoastMode] = useState(true);
+	const [language, setLanguage] = useState<BundledLanguage | null>(null);
+	const [autoDetected, setAutoDetected] = useState(false);
+
+	const handleLanguageDetected = useCallback((lang: string) => {
+		setLanguage(lang as BundledLanguage);
+		setAutoDetected(true);
+	}, []);
+
+	const handleLanguageChange = useCallback((lang: string | null) => {
+		setLanguage(lang as BundledLanguage | null);
+		setAutoDetected(false);
+	}, []);
 
 	return (
 		<div className="flex w-full flex-col items-center gap-6 md:gap-8 px-4 md:px-0 pb-10 md:pb-15">
@@ -62,12 +75,22 @@ export default function Home() {
 					</h1>
 				</div>
 				<p className="text-sm text-text-secondary">
-					// drop your code below and we&apos;ll rate it — brutally honest or
-					full roast mode
+					{
+						"// drop your code below and we'll rate it — brutally honest or full roast mode"
+					}
 				</p>
 			</section>
 
-			<CodeEditor value={code} onChange={setCode} className="max-w-195" />
+			<div className="flex w-full max-w-195 flex-col gap-2">
+				<CodeEditor
+					value={code}
+					onChange={setCode}
+					language={language}
+					autoDetected={autoDetected}
+					onLanguageDetected={handleLanguageDetected}
+					onLanguageChange={handleLanguageChange}
+				/>
+			</div>
 
 			<div className="mx-auto flex w-full max-w-195 flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
 				<div className="flex items-center gap-4">
@@ -76,7 +99,7 @@ export default function Home() {
 						<span className="text-3.25 text-accent-green">roast mode</span>
 					</div>
 					<span className="hidden text-xs text-text-tertiary sm:inline">
-						// maximum sarcasm enabled
+						{"// maximum sarcasm enabled"}
 					</span>
 				</div>
 
@@ -96,7 +119,7 @@ export default function Home() {
 			<section className="w-full max-w-240 flex flex-col gap-4 md:gap-6">
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2">
-						<span className="text-sm font-bold text-accent-green">//</span>
+						<span className="text-sm font-bold text-accent-green">{"//"}</span>
 						<span className="text-sm font-bold text-text-primary">
 							shame_leaderboard
 						</span>
@@ -108,8 +131,8 @@ export default function Home() {
 					</Link>
 				</div>
 
-				<p className="text-[13px] text-text-tertiary">
-					// the worst code on the internet, ranked by shame
+				<p className="text-3.25 text-text-tertiary">
+					{"// the worst code on the internet, ranked by shame"}
 				</p>
 
 				<div className="border border-border-primary">
@@ -147,7 +170,7 @@ export default function Home() {
 								<div className="flex flex-col gap-0.5 overflow-hidden">
 									{row.lines.map((line, i) => (
 										<span
-											key={i}
+											key={line}
 											className={`truncate text-xs ${i >= row.commentStart && row.commentStart >= 0 ? "text-text-muted" : "text-text-primary"}`}
 										>
 											{line}
